@@ -81,6 +81,8 @@ public class test {
         }*/
              Paciente pnuevo5 = new Paciente(7, "Andrey Rivera");
              ur.insertPaciente(pnuevo5,"Hemorragia masiva incontrolable");
+             Paciente pnuevo6 = new Paciente(8, "Andrey Rivera");
+             ur.insertPaciente(pnuevo6,"Hemorragia masiva incontrolable");
              PriorityQueue<Paciente> aux2=ur.salaDeEspera;
              while(!aux2.isEmpty()) {
        System.out.println("Dqueue" + "-->" + ur.salaDeEspera.remove());

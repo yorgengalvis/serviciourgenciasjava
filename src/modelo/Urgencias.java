@@ -17,8 +17,8 @@ import java.util.PriorityQueue;
  */
 public class Urgencias {
     public PriorityQueue<Paciente> salaDeEspera;
-    private LinkedList<Medico> medicosEnTurno;
-    private LinkedList<Paciente>  pacientesTurnoAsegurados;
+    public LinkedList<Medico> medicosEnTurno;
+    public LinkedList<Paciente>  pacientesTurnoAsegurados;
     
     public Urgencias(){
         this.salaDeEspera=new PriorityQueue<Paciente>();
@@ -54,8 +54,9 @@ public class Urgencias {
         Paciente aux=null;
         String medico="nada";
         for (Paciente paci:this.pacientesTurnoAsegurados) {
-            if(paci.getNombre()==paciente.getNombre()){
+            if(paci.getNombre().equals(paciente.getNombre())){
                 medico=paci.getMedicoQA();
+                paciente.setNumAsegurado(paci.getNumAsegurado());
                 paciente.setGradoDolencia(gradoDolencia);
                 paciente.setMedicoQA(medico);
                 aux=paciente;
@@ -84,11 +85,15 @@ public class Urgencias {
         return lista;
     }
     
+    public PriorityQueue<Paciente> getSalaEspera(){
+        return this.salaDeEspera;
+    }
+    
     public Paciente atenderPaciente(){
         if(salaDeEspera.isEmpty())return null;
         Paciente pacienteAtender=this.salaDeEspera.remove();
         for(Medico medicoTurno:this.medicosEnTurno){
-            if(pacienteAtender.getMedicoQA()==medicoTurno.getNombre() && !medicoTurno.isTurnoAtendiendo()){
+            if(pacienteAtender.getMedicoQA().equals(medicoTurno.getNombre()) && !medicoTurno.isTurnoAtendiendo()){
                int numAtendidos=medicoTurno.getNumPacientes();
                medicoTurno.setTurnoAtendiendo(true);
                medicoTurno.setNumPacientes(numAtendidos+1);

@@ -67,16 +67,16 @@ public class Paciente implements Comparable<Paciente>{
     
    
     public String toString() {
-        return "nombre=" + nombre + ", gradoDolencia=" + gradoDolencia + ", medicoQA=" + medicoQA + ", numAsegurado=" + numAsegurado;
+        return "#Asegurado: " + numAsegurado+ " Name: " +nombre + " gradoD: " + gradoDolencia + " MED Habitual:" + medicoQA;
     }
 
     public int compareTo(Paciente otro){
-       if (this.getGradoDolencia() < otro.getGradoDolencia())
-                return -1;
-            else if(this.getGradoDolencia() > otro.getGradoDolencia())
+       if (this.getGradoDolencia() > otro.getGradoDolencia())
+                return 1;
+            else if(this.getGradoDolencia() == otro.getGradoDolencia())
                 return 1;
             else
-                return 0;
+                return -1;
     }
     
     

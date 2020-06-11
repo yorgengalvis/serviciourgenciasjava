@@ -46,6 +46,15 @@ public class Medico {
     public void setTurnoAtendiendo(boolean turnoAtendiendo) {
         this.turnoAtendiendo = turnoAtendiendo;
     }
+
+    @Override
+    public String toString() {
+        return "Medico{" + "nombre=" + nombre + ", numPacientes=" + numPacientes + ", turnoAtendiendo=" + turnoAtendiendo + '}';
+    }
+    
+    public String toString2(){
+        return nombre+" numPaciente: "+numPacientes+" En atencion: "+turnoAtendiendo;
+    }
     
     
     
